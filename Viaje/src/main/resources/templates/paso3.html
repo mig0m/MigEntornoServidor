@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Planifica tu viaje - Paso 3</title>
+</head>
+<body>
+
+<h1>Planifica tu viaje</h1>
+<h2>Paso 3 de 3: Actividades y comentarios</h2>
+
+<p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+
+<form th:action="@{/viaje/resumen}" method="post">
+
+    <input type="hidden" name="nombre" th:value="${nombre}">
+    <input type="hidden" name="edad" th:value="${edad}">
+    <input type="hidden" name="tipo" th:value="${tipo}">
+    <input type="hidden" name="presupuesto" th:value="${presupuesto}">
+
+    <div th:each="destino : ${destinos}">
+        <input type="hidden" name="destinos" th:value="${destino}">
+    </div>
+
+    <h3>¿Qué actividades te gustaría hacer?</h3>
+
+    <p>
+        <input type="checkbox" id="senderismo" name="actividades"
+               value="Senderismo"
+               th:checked="${actividades != null and actividades.contains('Senderismo')}">
+        <label for="senderismo">Senderismo</label>
+    </p>
+
+    <p>
+        <input type="checkbox" id="museos" name="actividades"
+               value="Museos"
+               th:checked="${actividades != null and actividades.contains('Museos')}">
+        <label for="museos">Museos</label>
+    </p>
+
+    <p>
+        <input type="checkbox" id="gastronomia" name="actividades"
+               value="Gastronomía"
+               th:checked="${actividades != null and actividades.contains('Gastronomía')}">
+        <label for="gastronomia">Gastronomía</label>
+    </p>
+
+    <p>
+        <input type="checkbox" id="fotografia" name="actividades"
+               value="Fotografía"
+               th:checked="${actividades != null and actividades.contains('Fotografía')}">
+        <label for="fotografia">Fotografía</label>
+    </p>
+
+    <h3>Comentario opcional</h3>
+
+    <p>
+        <label for="comentario">Escribe un comentario:</label>
+        <textarea id="comentario" name="comentario" rows="4" cols="40"
+                  th:text="${comentario}"></textarea>
+    </p>
+
+    <button type="submit">Ver resumen final</button>
+
+</form>
+
+<form th:action="@{/viaje/volver2}" method="post">
+
+    <input type="hidden" name="nombre" th:value="${nombre}">
+    <input type="hidden" name="edad" th:value="${edad}">
+    <input type="hidden" name="tipo" th:value="${tipo}">
+    <input type="hidden" name="presupuesto" th:value="${presupuesto}">
+
+    <div th:each="destino : ${destinos}">
+        <input type="hidden" name="destinos" th:value="${destino}">
+    </div>
+
+    <button type="submit">Volver al paso anterior</button>
+
+</form>
+
+</body>
+</html>

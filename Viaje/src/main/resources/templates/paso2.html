@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Planifica tu viaje - Paso 2</title>
+</head>
+<body>
+
+<h1>Planifica tu viaje</h1>
+<h2>Paso 2 de 3: Destinos y presupuesto</h2>
+
+<p th:if="${error != null}" th:text="${error}" style="color:red"></p>
+
+<form th:action="@{/viaje/paso3}" method="post">
+
+    <input type="hidden" name="nombre" th:value="${nombre}">
+    <input type="hidden" name="edad" th:value="${edad}">
+    <input type="hidden" name="tipo" th:value="${tipo}">
+
+    <h3>¿Qué destinos te interesan?</h3>
+
+    <p>
+        <input type="checkbox" id="playa" name="destinos"
+               value="Playa"
+               th:checked="${destinos != null and destinos.contains('Playa')}">
+        <label for="playa">Playa</label>
+    </p>
+
+    <p>
+        <input type="checkbox" id="montana" name="destinos"
+               value="Montaña"
+               th:checked="${destinos != null and destinos.contains('Montaña')}">
+        <label for="montana">Montaña</label>
+    </p>
+
+    <p>
+        <input type="checkbox" id="ciudad" name="destinos"
+               value="Ciudad"
+               th:checked="${destinos != null and destinos.contains('Ciudad')}">
+        <label for="ciudad">Ciudad</label>
+    </p>
+
+    <h3>¿Cuál es tu presupuesto?</h3>
+
+    <p>
+        <input type="radio" id="economico" name="presupuesto"
+               value="Económico"
+               th:checked="${presupuesto == 'Económico'}">
+        <label for="economico">Económico</label>
+    </p>
+
+    <p>
+        <input type="radio" id="medio" name="presupuesto"
+               value="Medio"
+               th:checked="${presupuesto == 'Medio'}">
+        <label for="medio">Medio</label>
+    </p>
+
+    <p>
+        <input type="radio" id="alto" name="presupuesto"
+               value="Alto"
+               th:checked="${presupuesto == 'Alto'}">
+        <label for="alto">Alto</label>
+    </p>
+
+    <button type="submit">Continuar</button>
+
+</form>
+
+<form th:action="@{/viaje/volver1}" method="post">
+
+    <input type="hidden" name="nombre" th:value="${nombre}">
+    <input type="hidden" name="edad" th:value="${edad}">
+    <input type="hidden" name="tipo" th:value="${tipo}">
+
+    <button type="submit">Volver al paso anterior</button>
+
+</form>
+
+</body>
+</html>
