@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Planifica tu viaje perfecto - Paso 1</title>
+    <style>body {display: grid; justify-content: start; gap: 1rem;}</style>
+</head>
+<body>
+<h1>Planifica tu viaje</h1>
+<h2>Paso 1: Datos personales</h2>
+<p th:if="${error != null}" th:text="${error}" style="color: red"></p>
+<form th:action="@{/viaje/paso2}" method="post">
+    <label>Nombre:<input type="text" name="nombre" th:value="${nombre}"></label>
+    <label>Edad:<input type="text" name="edad" th:value="${edad}"></label>
+    <label for="tipo">Tipo de viaje:</label>
+    <select name="tipo" id="tipo">
+        <option value="">Elige una opción</option>
+        <option value="Aventura" th:selected="${tipo == 'Aventura'}">Aventura</option>
+        <option value="Relax" th:selected="${tipo == 'Relax'}">Relax</option>
+        <option value="Cultural" th:selected="${tipo == 'Cultural'}">Cultural</option>
+    </select>
+    <button type="submit">Continuar</button>
+</form>
+</body>
+</html>
