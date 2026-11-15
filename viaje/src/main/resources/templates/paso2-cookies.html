@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Planifica tu viaje perfecto - Paso 2</title>
+    <style>body {display: grid; justify-content: start; gap: 1rem;}</style>
+</head>
+<body>
+<h1>Planifica tu viaje</h1>
+<h2>Paso 2: Destinos y Presupuesto</h2>
+<p th:if="${error != null}" th:text="${error}" style="color: red"></p>
+<form th:action="@{/viaje-cookies/paso3}" method="post">
+    <h3>¿Qué destinos te interesan?</h3>
+    <input type="checkbox" name="destinos" id="pl" value="Playa" th:checked="${destinos != null and destinos.contains('Playa')}">
+    <label for="pl">Playa</label>
+    <input type="checkbox" name="destinos" id="mn" value="Montaña" th:checked="${destinos != null and destinos.contains('Montaña')}">
+    <label for="mn">Montaña</label>
+    <input type="checkbox" name="destinos" id="cd" value="Ciudad" th:checked="${destinos != null and destinos.contains('Ciudad')}">
+    <label for="cd">Ciudad</label>
+
+    <h3>¿Cuál es tu presupuesto?</h3>
+    <label><input type="radio" name="presupuesto" value="Económico" th:checked="${presupuesto == 'Económico'}">Económico</label>
+    <label><input type="radio" name="presupuesto" value="Medio" th:checked="${presupuesto == 'Medio'}">Medio</label>
+    <label><input type="radio" name="presupuesto" value="Alto" th:checked="${presupuesto == 'Alto'}">Alto</label>
+
+    <button type="submit">Continuar</button>
+</form>
+
+<form th:action="@{/viaje-cookies/volver1}" method="post">
+    <button type="submit">Volver al paso anterior</button>
+</form>
+</body>
+</html>
