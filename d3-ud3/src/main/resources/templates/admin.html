@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Administración</title>
+</head>
+<body>
+<h1>Zona de administración</h1>
+<p>Esta página solo es accesible para usuarios con rol ADMIN.</p>
+<p>Usuario actual: <span sec:authentication="name">admin</span></p>
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Cerrar sesión</button>
+</form>
+</body>
+</html>

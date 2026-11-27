@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Zona privada</title>
+</head>
+<body>
+<h1>Hola, <span sec:authentication="name">usuario</span>.</h1>
+<p>Has accedido a una página que requiere autenticación.</p>
+<p><a th:href="@{/admin}">Ir a administración (solo ADMIN)</a></p>
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Cerrar sesión</button>
+</form>
+</body>
+</html>

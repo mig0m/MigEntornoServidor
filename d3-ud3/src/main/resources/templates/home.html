@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - Spring Security</title>
+</head>
+<body>
+<h1>Bienvenido</h1>
+<p>Esta página es pública y no requiere iniciar sesión.</p>
+<p><a th:href="@{/hello}">Acceder a la página protegida</a></p>
+<p><a th:href="@{/admin}">Acceder a la zona de administración</a></p>
+</body>
+</html>
